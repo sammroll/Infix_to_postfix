@@ -6,12 +6,11 @@
 #include "MyStack.h"
 #include <ctype.h>
 
-#include "ExpressionSymbol.h"	// expressionSymbol class
-#include "CS255Exceptions.h"	// for expressionError exception
+#include "ExpressionSymbol.h"	
+#include "CS255Exceptions.h"	
 
 using namespace std;
 
-// labels designating the parentheses characters
 const char lParen = '(';
 const char rParen = ')';
 
@@ -41,13 +40,8 @@ private:
 	// stack of expressionSymbol objects
 	myStack<ExpressionSymbol> operatorStack;
 
-	// The expressionSymbol object op holds the current symbol.
-	//   Pop the stack and output as long as the symbol
-	//   on the top of the stack has a precedence >= that of
-	//   the current operator
 	void outputHigherOrEqual(const ExpressionSymbol& op);
 
-	// is ch one of '+','-','*','/', '^'
 	bool isOperator(char ch) const;
 };
 
