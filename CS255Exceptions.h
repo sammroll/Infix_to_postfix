@@ -20,7 +20,6 @@ protected: // allows a derived class to access msgString.
 	string msgString;
 };
 
-// failure to allocate memory (new() returns NULL)
 class MemoryAllocationError : public BaseException {
 public:
 	MemoryAllocationError(const string& msg = "") : BaseException(msg) {}
@@ -39,8 +38,6 @@ public:
 		ostringstream indexErr;
 
 		indexErr << msg << "  index " << i << "  size = " << size << ends;
-		// indexRangeError can modify msgString, since it is in
-		// the protected section of baseException
 		msgString = indexErr.str();
 	}
 };
@@ -83,8 +80,6 @@ public:
 		ostringstream dateErr;
 
 		dateErr << first << ' ' << v << ' ' << last << ends;
-		// dateError can modify msgString, since it is in
-		// the protected section of baseException
 		msgString = dateErr.str();
 	}
 };
@@ -102,8 +97,6 @@ public:
 		ostringstream fileErr;
 
 		fileErr << "Cannot open \"" << fname << "\"" << ends;
-		// fileOpenError can modify msgString, since it is in
-		// the protected section of baseException
 		msgString = fileErr.str();
 	}
 };
